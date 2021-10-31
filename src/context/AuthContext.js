@@ -39,7 +39,7 @@ export function AuthProvider({children}){
 
     async function singIn({name,password}){
 
-       const { data } = await axios.post(process.env.NEXT_PUBLIC_BASE_URL + "/user/login", {
+       const { data } = await axios.post("https://back-end-socia-media-project.herokuapp.com" + "/user/login", {
         name,
         password
       })
