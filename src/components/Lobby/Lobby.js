@@ -6,7 +6,6 @@ import { AuthContext } from "../../context/AuthContext"
 import { api } from "../../services/api"
 import { Nav } from "../Nav/Nav"
 import Link from "next/link"
-import axios from "axios"
 
 export default function Lobby({first_posts}) {
 

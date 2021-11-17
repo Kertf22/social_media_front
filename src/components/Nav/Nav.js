@@ -1,10 +1,10 @@
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import {Container, NavComponent, SideBar, SideBarWrap, Info, UserName, UserIcon, List, ListComponent,Effect,LoggoutContainer, Loggout, ButtonShow } from './NavStyle'
 import * as FaIcons from "react-icons/fa";
 import * as AiIcons from "react-icons/ai";
 import * as CgProfile  from "react-icons/cg";
-export const Nav = ({user,Disconnect}) =>{
+export const Nav = ({ user,Disconnect}) =>{
 
     const [sideBar, setSideBar] = useState(false);
 
