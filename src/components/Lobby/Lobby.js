@@ -11,10 +11,6 @@ export default function Lobby({first_posts}) {
 
     const { user, Disconnect, GetPosts } = useContext(AuthContext);
 
-    useEffect(() => {
-        api.get('/user');
-    },[])
-
     //Implementação do Scroll Infinito 
     const [posts, setPosts] = useState(first_posts);
     const [currentPage, setCurrentPage] = useState(1);

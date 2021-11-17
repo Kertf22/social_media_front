@@ -4,6 +4,7 @@ import {Container, NavComponent, SideBar, SideBarWrap, Info, UserName, UserIcon,
 import * as FaIcons from "react-icons/fa";
 import * as AiIcons from "react-icons/ai";
 import * as CgProfile  from "react-icons/cg";
+
 export const Nav = ({ user,Disconnect}) =>{
 
     const [sideBar, setSideBar] = useState(false);
@@ -38,9 +39,11 @@ export const Nav = ({ user,Disconnect}) =>{
                         </ListComponent>
                         <ListComponent >
                         <CgProfile.CgProfile    />
-                            <Link href={`/user/${user?._id}`}>
+                        {
+                        user ? <Link href={`/user/${user?._id}`}>
                                 Profile
-                            </Link>
+                        </Link> : <></>
+                        }
    
                         </ListComponent>
                     </List>

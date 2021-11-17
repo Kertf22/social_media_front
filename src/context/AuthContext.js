@@ -23,14 +23,15 @@ export function AuthProvider({children}){
         const { 'ufsproject_token': token } = parseCookies()
 
         if (token){
-            setTimeout(() =>{ }, 700)
+            setTimeout(() =>{}, 500)
             const { data } = await axios.get(process.env.NEXT_PUBLIC_BASE_URL + "/user", {
                 headers: { Authorization: `Bearer ${token}` }
             })
 
             api.defaults.headers['Authorization'] = `Bearer ${token}` ;
 
-            setUser({...data})
+            setUser({...data});
+
             if(Router.pathname == "/" || Router.pathname == "/cadastro" ){
                 Router.push("/lobby")
             }
@@ -50,10 +51,9 @@ export function AuthProvider({children}){
              maxAge: 60* 60* 24 // 1 dia
          })
       
-         setUser({name,imgUrl})
+        setUser({name,imgUrl})
       
-         Router.push("/lobby")
-          
+        Router.push("/lobby");
         };
 
     async function SignUp({userName, password, state}){

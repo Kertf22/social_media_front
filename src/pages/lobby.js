@@ -13,9 +13,6 @@ export default function LobbyPage(props) {
           <title>Social Media</title>
           <meta name="description" content="Social Media" />
           <link rel="icon" href="/favicon.ico" />
-
-
-
         </Head>
         <Lobby {...props} ></Lobby>
       </>
@@ -24,8 +21,7 @@ export default function LobbyPage(props) {
 
 export const getServerSideProps = async(ctx) => {
 
-    const { 'ufsproject_token': token } = parseCookies(ctx)
-    console.log(token)
+    const { 'ufsproject_token': token } = parseCookies(ctx);
     if (!token){
       return {
         redirect: {

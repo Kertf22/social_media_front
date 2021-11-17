@@ -9,8 +9,7 @@ export function getAPIClient(ctx=""){
     })
 
     api.interceptors.request.use(config => {
-        console.log(config);
-
+        
         return config
     })
 

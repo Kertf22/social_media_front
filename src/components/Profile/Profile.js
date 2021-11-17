@@ -11,13 +11,8 @@ import ImageDrop from "../ImageDrop/ImageDrop"
 
 
 export default function Profile({existUser,userProfile,first_posts}) {
-
     // Para ter apenas os post do usuário
     const { user, Disconnect, UserPost, ChagePhoto} = useContext(AuthContext)
-
-    useEffect(() => {
-        api.get('/user');
-    },[]);
 
     // Verificação se o usuário procurado existe
     if(!existUser){
