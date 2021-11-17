@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const Container = styled.div`
     margin-top: 20px;
     display:flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     color:#444;
 `;
@@ -11,7 +11,8 @@ export const Container = styled.div`
 export const FileInfo = styled.div`
     display:flex;
     align-items: center;
-
+    justify-content: center;
+    
     div{
         display: flex;
         flex-direction: column;
@@ -25,9 +26,9 @@ export const FileInfo = styled.div`
 `
 
 export const Preview = styled.div`
-    width: 36px;
-    height: 36px;
-    border-radius: 5px;
+    width: 120px;
+    height: 120px;
+    border-radius: 9999px;
     background-image: url(${props => props.src});
     background-repeat: no-repeat;
     background-size:cover;

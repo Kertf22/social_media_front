@@ -7,8 +7,6 @@ export const Textarea = styled.textarea`
   box-shadow: 0 8px 8px 0 rgba(31, 38, 135, 0.37);
   border-radius: ${props => props.BorderRadius};
   width: 80%;
-
-  
   padding: 1rem 1rem 1rem 1rem;
   text-align: start;
   border-color: #404040;
@@ -20,7 +18,7 @@ export const Textarea = styled.textarea`
   margin-top: 12px;
   &:focus {
     display: inline-block;
-    box-shadow: 0 0 0 0.2rem #b9abe0;
+    box-shadow: 0 8px 8px 0 rgba(31, 38, 135, 0.37);
     backdrop-filter: blur(12rem);
     border-radius: ${props => props.BorderRadius};
   }

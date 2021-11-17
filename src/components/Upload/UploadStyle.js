@@ -13,7 +13,7 @@ export const DropContainer = styled.div.attrs({
     border-radius: 4px;
     cursor: pointer;
     width:100%;
-
+    background-color: #fff;
     transition: height ease 0.2s;
     ${props => props.isDragActive && dragActive};
     ${props => props.isDragReject && dragReject};

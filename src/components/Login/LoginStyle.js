@@ -123,7 +123,6 @@ export const Submit = styled.button`
 `
 
 export const Text = styled.h5`
-
     padding:4px;
     margin-top: 16px;
     color:#636362;

@@ -21,7 +21,8 @@ export const LobbyContent = styled.div`
     h1{
         font-size: 32px;
         font-weight: 300;
-        margin-bottom: 8px;
+        margin-bottom: 16px;
+        color: white;
     }
 `;
 
@@ -90,6 +91,17 @@ export const Posts = styled.div`
     align-content: center;
     justify-content: center;
     align-items: center;
-    min-height: 520px;
+    min-height: 420px;
 
+    h1{
+        text-align: start;
+    }
 `;
+
+export const EndText = styled.p`
+    font-size: 14px;
+    margin-top: 32px;
+    margin-bottom: 8px;
+    color: white;
+    text-align: center;
+`

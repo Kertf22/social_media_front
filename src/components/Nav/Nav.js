@@ -4,13 +4,12 @@ import {Container, NavComponent, SideBar, SideBarWrap, Info, UserName, UserIcon,
 import * as FaIcons from "react-icons/fa";
 import * as AiIcons from "react-icons/ai";
 import * as CgProfile  from "react-icons/cg";
-import Image from 'next/image'
 export const Nav = ({user,Disconnect}) =>{
 
     const [sideBar, setSideBar] = useState(false);
 
     const showSideBar = () => setSideBar(!sideBar);
-    
+
     return(   
         <Container>
             <NavComponent>
@@ -31,7 +30,7 @@ export const Nav = ({user,Disconnect}) =>{
                     </Info>
                     <List>
                         <ListComponent >
-                       
+                        <AiIcons.AiOutlineHome />
                             <Link href="/">
                             Lobby 
                             </Link>
@@ -39,7 +38,7 @@ export const Nav = ({user,Disconnect}) =>{
                         </ListComponent>
                         <ListComponent >
                         <CgProfile.CgProfile    />
-                            <Link href="/user">
+                            <Link href={`/user/${user?._id}`}>
                                 Profile
                             </Link>
    

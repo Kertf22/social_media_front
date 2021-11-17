@@ -6,17 +6,8 @@ export default function File({files}){
     return (
         <Container>
             <FileInfo>
-                <Preview src={files?.preview}/>
-                    <div>
-                        <strong>{files?.name}</strong>
-                    </div>
+                <Preview src={files?.preview ? files?.preview : "https://ufs-project.s3.amazonaws.com/file1635975657699" }/>
             </FileInfo>
-
-            <div>
-
-                    {files.uploaded && (<MdCheckCircle size={24} color="#78e5d5"></MdCheckCircle>)}
-                    {files.error && (<MdError size={24} color="#e57878"></MdError>)}
-            </div>
         </Container>
     )
 }

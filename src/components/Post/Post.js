@@ -1,9 +1,9 @@
 import { useContext, useEffect, useState } from "react"
 import { AuthContext } from "../../context/AuthContext"
-
+import Link from "next/link";
 import { PostBox,UpperPost, UserInfo, Delete, DeleteButton, ImgContainer, PostContainer,Title, PostContent, DateContainer} from "./PostStyled"
 
-export default function Post({post,user_id}) {
+export default function Post({post,user}) {
     const [valido,setValido] = useState(true);
     const { DeletaPost } = useContext(AuthContext);
 
@@ -63,16 +63,16 @@ export default function Post({post,user_id}) {
             <UpperPost>
                 <UserInfo>
                     <ImgContainer>
-                        <img src={post.user.user_imgUrl}/>
+                    <Link href={`/user/${post.user.user_id }`}><img src={post.user.user_imgUrl}/></Link>
                     </ImgContainer>
-                        <h1>{post.user.user_name}</h1>
+                        <h1><Link href={`/user/${post.user.user_id }`}>{post.user.user_name}</Link></h1>
                     <DateContainer>                
                         {DateComponents}
                     </DateContainer>
                 </UserInfo>
                 
                 {
-                post.user.user_id == user_id  || post.user.admim == true 
+                (post.user.user_id == user?._id  || user?.admim )
                     ? <Delete> <DeleteButton onClick={e => handleDelet()}>Deletar</DeleteButton></Delete> 
                     : <></>
                 }

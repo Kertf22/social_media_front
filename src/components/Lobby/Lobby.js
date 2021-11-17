@@ -1,5 +1,5 @@
 
-import { Main, Posts, CreatePost, LobbyContent,Button,Text } from "./LobbyStyle"
+import { Main, Posts, CreatePost, LobbyContent,Button,Text,EndText } from "./LobbyStyle"
 import Post from "../Post/Post"
 import { useContext, useEffect, useRef, useState } from "react"
 import { AuthContext } from "../../context/AuthContext"
@@ -77,10 +77,10 @@ export default function Lobby({first_posts}) {
                         posts.length == 0 
                             ? <h1>There isn't any post available</h1> // Lógica de exclusão 
                             : posts.map(post => (
-                            <Post post={post} user_id={user?._id } key={post._id}/>))
+                            <Post post={post} user={user} key={post._id}/>))
                             //
                     }
-                    {hasEndingPosts ? <p>There isn't any post available</p> : <p ref={loadRef}>Loading more posts...</p>}
+                    {hasEndingPosts ? <EndText>There isn't any post available</EndText> : <EndText ref={loadRef}>Loading more posts...</EndText>}
                 </Posts>
             </LobbyContent>
         </Main>

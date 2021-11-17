@@ -10,8 +10,8 @@ export default function CadastroPage(props) {
     return (
       <>
         <Head>
-          <title>Projeto UFS</title>
-          <meta name="description" content="Projeto UFS" />
+          <title>Sign-up Social Media </title>
+          <meta name="description" content="Sign-up  Social Media " />
           <link rel="icon" href="/favicon.ico" />
         </Head>
         <Cadastro {...props} >

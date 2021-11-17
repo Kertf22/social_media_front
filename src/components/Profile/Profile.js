@@ -4,18 +4,35 @@ import { api } from "../../services/api"
 import { Nav } from "../Nav/Nav"
 import Post from "../Post/Post"
 import Link from "next/link"
-import { Main,ProfileContent,ProfileWarp, UserInfo, UserImg, UseText } from "./ProfileStyle"
+import { Main,ProfileContent,ProfileWarp, UserInfo,UserInfoWrap, UserImg, UseText,EndText,ChangePhoto,ChangePhotoButton } from "./ProfileStyle"
 import { Posts } from "../Lobby/LobbyStyle"
 import Image from 'next/image'
+import ImageDrop from "../ImageDrop/ImageDrop"
 
 
-export default function Profile({first_posts}) {
+export default function Profile({existUser,userProfile,first_posts}) {
 
     // Para ter apenas os post do usuário
-    const { user, Disconnect, UserPost} = useContext(AuthContext)
+    const { user, Disconnect, UserPost, ChagePhoto} = useContext(AuthContext)
+
     useEffect(() => {
-        api.get('/user')
-    },[])
+        api.get('/user');
+    },[]);
+
+    // Verificação se o usuário procurado existe
+    if(!existUser){
+        return(
+            <>
+            <Main>
+                <Nav user={user} Disconnect={Disconnect}/>
+                <ProfileContent>
+                    <h1>User not Found</h1>
+                </ProfileContent>
+            </Main>
+            </>
+        )
+    }
+
 
     //Implementação do Scroll Infinito 
     const [posts, setPosts] = useState(first_posts);
@@ -47,7 +64,7 @@ export default function Profile({first_posts}) {
     // Pegando mais posts
     useEffect(() => {
         const handleRequest = async () => {
-            const data = await UserPost(currentPage, 4);
+            const data = await UserPost(userProfile.id,currentPage, 4);
 
               if (!data.length){
                 setHasEndingPosts(true);
@@ -60,34 +77,72 @@ export default function Profile({first_posts}) {
         handleRequest();
     },[currentPage]);
 
+    const date = new Date(userProfile?.created_at);
+    let dateTime = `${date.getDay()}/${date.getMonth()}/${date.getFullYear()}`;
 
-    const date = new Date(user?.created_at)
+
+    const [displayDrop,setDisplayDrop] = useState(false);
+
+    const DisplayImageDrop = () => {
+        console.log(displayDrop)
+        setDisplayDrop(!displayDrop)
+    }
+
+    const reciveFile = async (state) => {
+        try {
+            await ChagePhoto(user._id,state)
+        } catch (error) {
+            handleError(error)
+        }
+    }
+    const handleParantCallBack = (closeButtonPress) => {
+        setDisplayDrop(closeButtonPress)
+    }
+
+    const [error,setError] = useState(false);
+    const [errorMesage,setErrorMesage] = useState();
+
+    const handleError = (err) => {  
+        setError(true);
+        setErrorMesage(err.message);
+        setTimeout(() => {
+            setError(false);
+        },2000);
+    }
+
     return (
         <Main>
             <Nav user={user} Disconnect={Disconnect}/>
+            <ImageDrop buttonPress={displayDrop} parentCallBack={handleParantCallBack} reciveFile={reciveFile}/>
             <ProfileContent>
                 <ProfileWarp>
                     <UserInfo>
-                        <UserImg>
-                         <img src={user?.imgUrl} />
-                        </UserImg>
-                        <UseText>
-                            <h1>{user?.name}</h1>
-                            <p>Perfil criado em: {`${date.getDay()}/${date.getMonth()}/${date.getFullYear()}`}</p>
+                        <UserInfoWrap>
+                            <UserImg>
+                                <img src={userProfile.imgUrl} />
+                            </UserImg>
+                            <UseText>
+                                <h1>{userProfile.name}</h1>
+                                <h2>Numero de Post: {userProfile.posts}</h2>
+                                <p>Perfil criado em: {dateTime}</p>
+                            </UseText>
 
-                            <h2>Total de {user?.posts} posts</h2>
-                        </UseText>
+                        </UserInfoWrap>
+                        {user?._id == userProfile._id ? <ChangePhoto onClick={DisplayImageDrop}>
+                            <ChangePhotoButton>Edite Profile</ChangePhotoButton>
+                        </ChangePhoto> :<></>}
                     </UserInfo>
+                    
                     <Posts>
                         <h1>Posts</h1>
                         {
                         posts?.length == 0 
                             ? <h1>There isn't any post available</h1> // Lógica de exclusão 
                             : posts?.map(post => (
-                            <Post post={post} user_id={user?._id } key={post._id}/>))
+                            <Post post={post} user={user} key={post._id}/>))
                             //
                         }
-                        {hasEndingPosts ? <p>There isn't any post available</p> : <p ref={loadRef}>Loading more posts...</p>}
+                        {hasEndingPosts ? <EndText>There isn't any more post available</EndText> : <EndText ref={loadRef}>Loading more posts...</EndText>}
                     </Posts>
                 </ProfileWarp>
             </ProfileContent>

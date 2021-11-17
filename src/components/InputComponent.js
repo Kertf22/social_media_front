@@ -12,7 +12,6 @@ export const StyledInput = styled.input`
   border:1px solid black;
   padding: 1rem 1rem 1rem 1rem;
   text-align: start;
-  border: none;
   outline: none;
   overflow: none;
   color: #3c354e;
@@ -20,11 +19,11 @@ export const StyledInput = styled.input`
   font-weight: bold;
   outline: none;
   margin-top: 12px;
-
+  border: 0.1px solid #404040;
 
   &:focus {
     display: inline-block;
-    box-shadow: 0px 2px 8px 5px rgba(165,168,207, 0.9);
+    box-shadow: 0px 2px 8px 5px rgba(165,168,207, 1);
     backdrop-filter: blur(12rem);
     border-radius: ${props => props.BorderRadius};
   }

@@ -11,8 +11,8 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>Projeto UFS</title>
-        <meta name="description" content="Projeto UFS" />
+        <title>Social Media Sign-in</title>
+        <meta name="description" content="Social Media Sign-in" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Login />

@@ -7,8 +7,8 @@ export default function LobbyPage(props) {
     return (
       <>
         <Head>
-          <title>Projeto UFS</title>
-          <meta name="description" content="Projeto UFS" />
+          <title>Social Media Create Post</title>
+          <meta name="description" content="Social Media Create Post" />
           <link rel="icon" href="/favicon.ico" />
         </Head>
         <CriarPost></CriarPost>

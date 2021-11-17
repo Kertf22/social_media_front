@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 import Link from "next/link"
 import { AuthContext } from "../../context/AuthContext";
@@ -6,7 +6,7 @@ import {  Container,Content, WelcomeText } from "../Login/LoginStyle"
 import {  Textarea,BacktoLobby } from "./CreatePostStyle";
 import { StyledInput, InputContainer } from "../InputComponent"
 import { StyledButton, ButtonContainer } from "../ButtonComponent";
-
+import ErrorBox from "../Error/Error";
 
 export default function CriarPost(){
     const { register, handleSubmit } = useForm();
@@ -14,8 +14,11 @@ export default function CriarPost(){
     const { user, CreatePost } = useContext(AuthContext);
     
     async function handleCreatePost(data){
-        const {name, imgUrl } = user;
+        const { name, imgUrl } = user;
         try {
+            if (!data.title || !data.description){
+                throw Error("Por favor, preencha os campos obrigatórios!")
+            }
           await CreatePost({       
             ...data,
             user_name:name,
@@ -23,12 +26,24 @@ export default function CriarPost(){
         })
 
         } catch (error) {
-            console.log(error)
+            handleError(error)
         }
+    }
+
+    const [error,setError] = useState(false);
+    const [errorMesage,setErrorMesage] = useState();
+
+    const handleError = (err) => {
+        setError(true);
+        setErrorMesage(err.message)
+        setTimeout(() => {
+            setError(false);
+        },3000);
     }
 
     return(
         <Container>
+         <ErrorBox error={error} errorMesage={errorMesage}/>
             <Content>
                 <WelcomeText>
                     <h4>Faça seu Post</h4>

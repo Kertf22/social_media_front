@@ -138,14 +138,15 @@ export const Loggout = styled.div`
     height: 40px;
     padding: 10px 16px;
     border-radius: 5px;
-    background-color:#001C25;
+    background-color: #100c08;
+
     font-size: 14px;
     border-radius: 6px solid white;
     box-shadow: 2px 5px 2px rgba(0,0,0,0.5);
     color:white;
     &:hover{
+        background-color: #0f0f0f;
 
-        background-color:#00141B;
         transition: 0.2s ease-in;
     }
     span{

@@ -1,27 +1,39 @@
 import styled from "styled-components";
 
 
-export const ImageInput = styled.div`
-    display: flex;
-    flex-direction:column;
-    align-items: center;
-    text-align: center;
-    padding: 1rem;
-    margin: 4px;
-    border-radius: 25px;
-
-
-    input{
-        width: 280px;
-        height: fit-content;
-        font-size: 18px;
-        border-radius: 8px;
-        outline: none;
-        border: 0.5px solid black;
-    }
-    span{
-        font-size: 16px;
-        margin-bottom: 8px;
+export const Text = styled.h5`
+    padding:4px;
+    margin-top: 16px;
+    width: fit-content;
+    color:#636362;
+    cursor: pointer;
+    &:hover{
+        color:#16161d;
+        transition: 0.2s ease-in;
     }
 `
+export const TakeOffPhotoBox = styled.div`
+    display: flex;
+    justify-content: end;
+    height: 24px;
+`
 
+export const TakeOffPhoto = styled.div`
+    font-weight: 300;
+    font-size: 12px;
+    color:#fafafa;
+    margin-right: 16px;
+    cursor: pointer;
+    height: 24px;
+    background-color: #cd5c5c;
+    padding: 4px;
+    border-radius: 4px;
+    box-shadow: 0px 1px 5px 1px rgba(0,0,0,0.5);
+    width: fit-content;
+    position: relative;
+    right: 10px;
+    &:hover{
+        background-color: #cf352e;
+        transition: 0.2s ease-in;
+    }
+`

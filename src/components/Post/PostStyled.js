@@ -29,7 +29,8 @@ export const DeleteButton = styled.div`
     width:65px;
     height:35px;
     text-align: center;
-    background-color:#023e8a;
+    background-color:#722f37;
+
     color:white;
     text-align: center;
     padding: 5px 5px;
@@ -40,8 +41,8 @@ export const DeleteButton = styled.div`
     transition: 0.4s ease;
     &:hover{
         box-shadow: 5px -5px 2px rgba(0,0,0,0.4);
-
-        background-color:#03045e;
+        background-color:#8A0707;
+        
     }
 `
 
@@ -55,6 +56,15 @@ export const UserInfo = styled.div`
         margin-right: 4px;
         text-align: left;
         font-weight: 350;
+
+        a{
+            color:black;
+            text-decoration: none;
+            &:hover{
+                color:#cacacaca;
+                transition: 0.5s ease;
+            }
+        }
     }
 `
 
@@ -63,7 +73,7 @@ export const ImgContainer = styled.div`
     max-width: 48px;
     height: 48px;
     margin-right: 16px;
-
+    cursor: pointer;
     img {
         width: 100%;
         height: 100%;
@@ -86,6 +96,7 @@ export const Title = styled.div`
         color:#323232;
         font-size: 24px;
         font-weight: 520;
+
     }
 
 `
