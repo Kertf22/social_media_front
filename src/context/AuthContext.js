@@ -37,7 +37,7 @@ export function AuthProvider({children}){
             }
         }
 
-    }, [])
+    }, [isAuthenticated])
     async function SignIn({name,password}){
 
         const {status,data} = await axios.post(process.env.NEXT_PUBLIC_BASE_URL + "/user/login", {
@@ -45,13 +45,13 @@ export function AuthProvider({children}){
            password
          })
 
-         const { imgUrl } = jwt_decode(data);
+         const { imgUrl, id } = jwt_decode(data);
 
          setCookie(undefined, 'ufsproject_token', data,{
              maxAge: 60* 60* 24 // 1 dia
          })
       
-        setUser({name,imgUrl})
+        setUser({name,imgUrl,_id:id})
       
         Router.push("/lobby");
         };

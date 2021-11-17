@@ -2,6 +2,8 @@ import Head from 'next/head'
 import Lobby from '../components/Lobby/Lobby'
 import { parseCookies } from 'nookies'
 import axios from 'axios'
+import { getAPIClient } from '../services/axios'
+import { api } from '../services/api'
 
 
 export default function LobbyPage(props) {
@@ -20,8 +22,8 @@ export default function LobbyPage(props) {
   }
 
 export const getServerSideProps = async(ctx) => {
-
     const { 'ufsproject_token': token } = parseCookies(ctx);
+
     if (!token){
       return {
         redirect: {
